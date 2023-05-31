@@ -1,0 +1,39 @@
+/* Center the table */
+table {
+    margin: auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+    width: 700px;
+  }
+
+  th {
+    background-color: #ddd;
+    font-weight: bold;
+    padding: 10px;
+    border: 1px solid black;
+    height: 50px
+    
+  }
+
+  td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid black;
+    height: 50px
+    
+  }
+
+  .delete-row-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+  }
+
+  .bx-trash {
+    color: red;
+  }
+
+  .delete-row-btn:hover .bx-trash {
+    color: rgb(0, 0, 0);
+  }

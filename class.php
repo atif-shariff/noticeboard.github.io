@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Data</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .sidebar {
+  position: fixed;
+  height: 100%;
+  width: 240px;
+  left: -40px;
+  background: #000000;
+  transition: all 0.5s ease;
+}
+
+.sidebar.active {
+  width: 60px;
+}
+
+.sidebar .logo-details {
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.sidebar .logo-details i {
+  font-size: 28px;
+  font-weight: 500;
+  color: #fff;
+  min-width: 60px;
+  text-align: center;
+}
+
+.sidebar .logo-details .logo_name {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.sidebar .nav-links {
+  margin-top: 10px;
+}
+
+.sidebar .nav-links li {
+  position: relative;
+  list-style: none;
+  height: 50px;
+  align-items: center;
+}
+
+.sidebar .nav-links li a {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.4s ease;
+}
+
+.sidebar .nav-links li a.active {
+  background: #8a0202;
+}
+
+.sidebar .nav-links li a:hover {
+  background: #f80303;
+}
+
+.sidebar .nav-links li i {
+  min-width: 60px;
+  text-align: center;
+  font-size: 18px;
+  color: #fff;
+}
+
+.sidebar .nav-links li a .links_name {
+  color: #fff;
+  font-size: 15px;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.sidebar .nav-links .log_out {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+    .header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      width: 100%;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    .semester-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: flex-start;
+      margin-top: 20px;
+    }
+
+    .semester-box {
+      width: 300px;
+      height: 300px;
+      border: 1px solid #ddd;
+      padding: 20px;
+      margin: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #fff;
+    }
+
+    .semester-title {
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 10px;
+      display: none;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .show-data-btn {
+      display: block;
+      margin: 10px auto;
+      padding: 8px 16px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .show-data-btn:hover {
+      background-color: #45a049;
+    }
+
+    .student-data {
+      background-color: #f2f2f2;
+      padding: 10px;
+      margin-top: 10px;
+      display: none;
+      overflow-y: auto;
+      max-height: 120px;
+    }
+    .student-data.show {
+      display: block;
+    }
+  </style>
+  <script>
+    function toggleStudentData(semesterId) {
+      var table = document.getElementById(semesterId);
+      var button = document.getElementById(semesterId + '-button');
+      
+      if (table.style.display === 'none') {
+        table.style.display = 'table';
+        button.textContent = 'Hide Data';
+      } else {
+        table.style.display = 'none';
+        button.textContent = 'Show Data';
+      }
+    }
+  </script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+          <div class="logo-details">
+            <i class=''></i>
+            <span class="logo_name">Signage</span>
+          </div>
+          <ul class="nav-links">
+            <li>
+              <a href="contents.php">
+                <i class='bx bx-grid-alt'></i>
+                <span class="links_name">Dashboard</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class='bx bx-box'></i>
+                <span class="links_name">Class</span>
+              </a>
+            </li>
+            <li>
+              <a href="Student.php">
+                <i class='bx bx-list-ul'></i>
+                <span class="links_name">Student list</span>
+              </a>
+            </li>
+            <li>
+              <a href="analytics.php">
+                <i class='bx bx-pie-chart-alt-2'></i>
+                <span class="links_name">Analytics</span>
+              </a>
+            </li>
+            <li>
+              <a href="index.php">
+                <i class='bx bx-cog'></i>
+                <span class="links_name">Home</span>
+              </a>
+            </li>
+            <li class="log_out">
+              <a href="logout.php">
+                <i class='bx bx-log-out'></i>
+                <span class="links_name">Log out</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="main-content">
+          <section class="home-section">
+            <!-- Your main content here -->
+          </section>
+        </div>
+      </div>
+  <div class="header">
+    <h1>Student Data</h1>
+  </div>
+  
+  <div class="semester-container">
+    <div class="semester-box">
+      <h2 class="semester-title">Semester 1</h2>
+      <button class="show-data-btn" id="semester1-button" onclick="toggleStudentData('semester1')">Show Data</button>
+            <table id="semester1">
+                <tr>
+                    <th>Name</th>
+                    <th>Roll Number</th>
+                    <th>Attendance Status</th>
+                </tr>
+                <tr>
+                    <td>John Doe</td>
+                    <td>001</td>
+                    <td>Present</td>
+                </tr>
+                <tr>
+                    <td>Jane Smith</td>
+                    <td>002</td>
+                    <td>Absent</td>
+                </tr>
+                <tr>
+                    <td>Michael Johnson</td>
+                    <td>003</td>
+                    <td>Present</td>
+                </tr>
+                <td>Sarah Williams</td>
+                <td>004</td>
+                <td>Absent</td>
+                </tr>
+                <tr>
+                    <td>Robert Davis</td>
+                    <td>005</td>
+                    <td>Present</td>
+                </tr>
+                <tr>
+                    <td>Emily Thompson</td>
+                    <td>006</td>
+                    <td>Absent</td>
+                </tr>
+                <tr>
+                    <td>David Brown</td>
+                    <td>007</td>
+                    <td>Present</td>
+                </tr>
+                <tr>
+                    <td>Olivia Johnson</td>
+                    <td>008</td>
+                    <td>Present</td>
+                </tr>
+                <tr>
+                    <td>Matthew Wilson</td>
+                    <td>009</td>
+                    <td>Absent</td>
+                </tr>
+                <tr>
+                    <td>Emma Anderson</td>
+                    <td>010</td>
+                    <td>Present</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="semester-box">
+            <h2 class="semester-title">Semester 2</h2>
+            <button class="show-data-btn" id="semester2-button" onclick="toggleStudentData('semester2')">Show
+                Data</button>
+            <table id="semester2">
+                <tr>
+                    <th>Name</th>
+                    <th>Roll Number</th>
+                    <th>Attendance Status</th>
+                </tr>
+                <tr>
+                    <td>Michael Johnson</td>
+                    <td>003</td>
+                    <td>Present</td>
+                </tr>
+                <tr>
+                    <td>Sarah Williams</td>
+                    <td>004</td>
+                    <td>Absent</td>
+                </tr>
+                <tr>
+                    <td>Michael Johnson</td>
+                    <td>003</td>
+                    <td>Present</td>
+                </tr>
+                <td>Sarah Williams</td>
+                <td>004</td>
+                <td>Absent</td>
+                </tr>
+                <tr>
+                    <td>Robert Davis</td>
+                    <td>005</td>
+                    <td>Present</td>
+                </tr>
+                <tr>
+                    <td>Emily Thompson</td>
+                    <td>006</td>
+                    <td>Absent</td>
+                </tr>
+                <tr>
+                    <td>David Brown</td>
+                    <td>007</td>
+                    <td>Present</td>
+                </tr>
+                <tr>
+                    <td>Olivia Johnson</td>
+                    <td>008</td>
+                    <td>Present</td>
+                </tr>
+                <tr>
+                    <td>Matthew Wilson</td>
+                    <td>009</td>
+                    <td>Absent</td>
+                </tr>
+                <tr>
+                    <td>Emma Anderson</td>
+                    <td>010</td>
+                    <td>Present</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Add more semester boxes as needed -->
+    </div>
+
+</body>
+
+</html>
